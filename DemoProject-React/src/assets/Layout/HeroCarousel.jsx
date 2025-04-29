@@ -2,6 +2,7 @@ import adamNormal from "../images/adam-github.png"
 import adamGopher from "../images/adam-gopher.png"
 import adamDotNet from "../images/adam-dotnet.png"
 import adamTailWind from "../images/adam-tailwind.png"
+import adamReactLogo from "../images/react-logo-light.svg"
 import { useState, useEffect } from 'react';
 import HeroSlide from './HeroSlide';
 
@@ -39,6 +40,15 @@ const slides = [
     hook: "Reliablility and tooling.",
     text: 'C#/.NET Architect - let\'s talk APIs and queues, dependancy injection and middlewares.',
   },
+  {
+    tag: "React 19",
+    brief: "Component based.",
+    highlight: "Scalable",
+    hook: "Elegant, stateful UI.",
+    text: "React powers dynamic interfaces by putting state at the heart of your UI.",
+    image: adamReactLogo,   
+    classes: "rounded"
+  },
 
 ];
 
@@ -61,7 +71,7 @@ function HeroCarousel() {
             index === current ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <HeroSlide image={slide.image} text={slide.text} tag={slide.tag} brief={slide.brief} highlight={slide.highlight} hook={slide.hook} />
+          <HeroSlide {...slide} />
         </div>
       ))}
     </div>
