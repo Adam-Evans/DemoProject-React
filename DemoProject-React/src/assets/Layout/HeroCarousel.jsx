@@ -14,7 +14,8 @@ const slides = [
     hook: "Code wizard and solution finder.",
     text: 'Hi, I\'m Adam - a pragmatic full-stack dev with a passion for optimising processes.',
     image: adamNormal,
-    classes: "rounded"
+    classes: "rounded",
+    order: 1,
   },
   {
     tag: "Tailwind CSS",
@@ -23,14 +24,16 @@ const slides = [
     hook: "Flexible and powerful.",
     text: 'Utility-first UI\'s built around Tailwind allowing newcomers to jump right in.',
     image: adamTailWind,
+    order: 3,
   },
   {
     tag: "Golang",
-    brief:"The new kid on the block.",
+    brief:"Simple, reliable, efficient.",
     highlight: "Powerful.",
     hook: "Simplicity meets speed.",
     image: adamGopher,
     text: 'Part-time Go gopher, full-time problem solver. When it needs to be fast and simple go for Go.',
+    order: 4,
   },
   {
     image: adamDotNet,
@@ -39,15 +42,17 @@ const slides = [
     highlight:"Proven.", 
     hook: "Reliablility and tooling.",
     text: 'C#/.NET Architect - let\'s talk APIs and queues, dependancy injection and middlewares.',
+    order: 2,
   },
   {
     tag: "React 19",
-    brief: "Component based.",
+    brief: "Component-driven",
     highlight: "Scalable",
     hook: "Elegant, stateful UI.",
     text: "React powers dynamic interfaces by putting state at the heart of your UI.",
     image: adamReactLogo,   
-    classes: "rounded"
+    classes: "rounded",
+    order: 5,
   },
 
 ];
@@ -62,9 +67,11 @@ function HeroCarousel() {
     return () => clearInterval(timer);
   }, []);
 
+  const orderedSlides = slides.sort((a, b) => a.order - b.order);
+
   return (
     <div className="relative w-full h-screen flex justify-center align-middle">
-      {slides.map((slide, index) => (
+      {orderedSlides.map((slide, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-700 ${
